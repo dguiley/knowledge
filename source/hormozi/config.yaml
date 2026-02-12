@@ -1,0 +1,16 @@
+name: hormozi
+type: youtube
+url: https://youtube.com/@AlexHormozi/videos
+description: Business growth code - CAC vs LTV, advertising, scaling
+lookback: 20
+sync_forward: true
+last_sync: null
+tags:
+  - business
+  - growth
+  - marketing
+  - sales
+notes: |
+  Business growth fundamentals. CAC vs LTV framework.
+  Early payment strategies to fuel customer acquisition.
+  Advertising and offer creation.

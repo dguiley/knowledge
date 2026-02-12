@@ -1,0 +1,13 @@
+{
+  "name": "knowledge",
+  "version": "1.0.0",
+  "description": "Personal knowledge base with Claude-driven source management",
+  "type": "module",
+  "scripts": {
+    "update-sources": "node scripts/update-sources.mjs",
+    "ingest-url": "node scripts/ingest-url.mjs"
+  },
+  "dependencies": {
+    "@danielxceron/youtube-transcript": "^1.2.3"
+  }
+}

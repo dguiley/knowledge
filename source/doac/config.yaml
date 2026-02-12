@@ -1,0 +1,19 @@
+name: doac
+type: youtube
+url: https://youtube.com/@TheDiaryOfACEO/videos
+channel_id: TheDiaryOfACEO
+description: General knowledge, entrepreneurship, life lessons from Steven Bartlett
+lookback: 20
+sync_forward: true
+last_sync: null
+priority: high
+tags:
+  - business
+  - entrepreneurship
+  - interviews
+  - life
+  - psychology
+notes: |
+  Steven Bartlett's podcast. High-quality guests across domains.
+  Gold mine for actionable business and life insights.
+  Guests include entrepreneurs, scientists, psychologists, athletes.

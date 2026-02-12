@@ -1,0 +1,327 @@
+# Source Registry
+# All external content sources for knowledge tree ingestion
+# Default: 30 latest videos, sync forward
+
+defaults:
+  type: youtube
+  lookback: 30
+  sync_forward: true
+
+sources:
+  # === BUSINESS & ENTREPRENEURSHIP ===
+
+  doac:
+    name: Diary of a CEO
+    url: https://youtube.com/@TheDiaryOfACEO/videos
+    description: General knowledge, entrepreneurship, life lessons
+    tags: [business, entrepreneurship, interviews, life]
+    priority: high
+    notes: |
+      Steven Bartlett's podcast. High-quality guests across domains.
+      Gold mine for actionable business and life insights.
+
+  hormozi:
+    name: Alex Hormozi
+    url: https://youtube.com/@AlexHormozi/videos
+    description: Business growth code - CAC vs LTV, advertising, scaling
+    tags: [business, growth, marketing, sales]
+    priority: high
+    notes: |
+      Business growth fundamentals. CAC vs LTV framework.
+      Early payment strategies to fuel customer acquisition.
+      Advertising and offer creation.
+
+  eo-global:
+    name: EO Global
+    url: https://youtube.com/@eoglobal/videos
+    description: Entrepreneurs Organization - modern business lessons
+    tags: [business, entrepreneurship, leadership]
+    priority: medium
+    notes: |
+      Valuable lessons in modern business from entrepreneur community.
+
+  dan-martell:
+    name: Dan Martell
+    url: https://youtube.com/@danmartell/videos
+    description: SaaS growth, coaching, Buy Back Your Time
+    tags: [business, saas, growth, coaching]
+    priority: high
+    notes: |
+      SaaS Academy founder. Buy Back Your Time author.
+      Growth coaching and business scaling.
+      Search: @danmartell/search?query=<term>
+
+  daniel-priestley:
+    name: Daniel Priestley
+    url: https://youtube.com/@DanielPriestley/videos
+    description: Key person of influence, business building
+    tags: [business, personal-brand, entrepreneurship]
+    priority: medium
+    notes: |
+      Key Person of Influence framework. Scorecard marketing.
+      Business building and personal branding.
+
+  starter-story:
+    name: Starter Story
+    url: https://youtube.com/@StarterStoryBuild/videos
+    description: AI business insights and startup stories
+    tags: [business, startups, ai-business]
+    priority: medium
+    notes: |
+      AI business YouTuber. Good practical startup content.
+
+  # === AI & CODING ===
+
+  aie:
+    name: AI Engineer
+    url: https://youtube.com/@aiDotEngineer/videos
+    description: AI engineering guidance, industry trends
+    tags: [ai, engineering, trends]
+    priority: high
+    notes: |
+      Some episodes are golden guidance (context engineering, etc).
+      Some are industry trends. Some I disagree with.
+      Filter for the gems.
+
+  anthropic:
+    name: Anthropic
+    url: https://youtube.com/@anthropic-ai/videos
+    description: Official Anthropic content - Claude, Claude Code
+    tags: [ai, claude, anthropic, tools]
+    priority: high
+    notes: |
+      We use their products. Anything from Claude Code creators is important.
+      Official source of truth for Claude capabilities.
+
+  sean-kochel:
+    name: Sean Kochel
+    url: https://youtube.com/@iamseankochel/videos
+    description: High-level AI coding practitioner
+    tags: [ai-coding, practices, tutorials]
+    priority: high
+    notes: |
+      This guy is AI coding at a high level.
+      Good practical patterns and workflows.
+
+  patrick-ellis:
+    name: Patrick Oakley Ellis
+    url: https://youtube.com/@PatrickOakleyEllis/videos
+    description: CTO/Founder AI-native workflows, Claude Code expert
+    tags: [ai-coding, claude-code, startup, workflows]
+    priority: high
+    notes: |
+      Forbes 30 Under 30. CTO of Snapbar.
+      Deep Claude Code expertise - uses it daily since launch.
+      Practical founder/CTO perspective on AI-native development.
+      MCP integrations, agent workflows, real production patterns.
+
+  bmad-code:
+    name: BMad Code
+    url: https://youtube.com/@BMadCode/videos
+    description: AI coding protocols, specs - early pioneer
+    tags: [ai-coding, protocols, specs]
+    priority: medium
+    notes: |
+      Forefront of AI coding protocols and specs.
+      Good counterpoint to spec-driven dev.
+      Too verbose and greenfield focused - feelgood markdown fluff.
+      But one to watch for ideas.
+
+  ai-jason:
+    name: AI Jason
+    url: https://youtube.com/@AIJasonZ/videos
+    description: AI coding tutorials - modern AI university
+    tags: [ai-coding, tutorials, education]
+    priority: medium
+    notes: |
+      Good tutorials on AI coding.
+      Example of YouTubers being the modern AI university.
+
+  cole-medin:
+    name: Cole Medin
+    url: https://youtube.com/@ColeMedin/videos
+    description: AI dev tutorials - catalog for reference
+    tags: [ai-coding, tutorials, reference]
+    priority: medium
+    notes: |
+      AI dev tutorials. Catalog and reference when building something.
+
+  indy-dev-dan:
+    name: Indy Dev Dan
+    url: https://youtube.com/@indydevdan/videos
+    description: AI dev tutorials - catalog for reference
+    tags: [ai-coding, tutorials, reference]
+    priority: medium
+    notes: |
+      AI dev tutorials. Catalog and reference when building something.
+
+  all-about-ai:
+    name: All About AI
+    url: https://youtube.com/@AllAboutAI/videos
+    description: Latest AI coding trends
+    tags: [ai-coding, trends, tutorials]
+    priority: medium
+    notes: |
+      YouTuber hitting the latest AI coding trends.
+
+  wes-mcdowell:
+    name: Wes McDowell
+    url: https://youtube.com/@WesMcDowellInc/videos
+    description: AI coding and automation
+    tags: [ai-coding, automation]
+    priority: low
+    notes: |
+      AI coding and automation YouTuber. Some gems.
+
+  yifan-bth:
+    name: Yifan BTH
+    url: https://youtube.com/@YifanBTH/videos
+    description: AI coding tutorials
+    tags: [ai-coding, tutorials]
+    priority: low
+    notes: |
+      AI coding content. Similar to others in this category.
+
+  # === FUTURE TECH & MOONSHOTS ===
+
+  peter-diamandis:
+    name: Peter Diamandis
+    url: https://youtube.com/@peterdiamandis/videos
+    description: Moonshot tech, AI industry, future trends
+    tags: [tech, future, ai, moonshots]
+    priority: high
+    notes: |
+      Tip of the spear on technology and AI.
+      Moonshot episodes reveal industry opportunities and tools.
+      Pay attention to actionable insights.
+
+  every-inc:
+    name: Every Inc
+    url: https://youtube.com/@EveryInc/videos
+    description: Newsletter/product company - educational content
+    tags: [ai, business, development]
+    priority: medium
+    notes: |
+      Newsletter gone product company.
+      Educational content as marketing.
+      Important info on development and industry topics.
+
+  david-ondrej:
+    name: David Ondrej
+    url: https://youtube.com/@DavidOndrej/videos
+    description: Variety of AI and tech topics
+    tags: [ai, tech, variety]
+    priority: low
+    notes: |
+      Variety content. Check occasionally.
+
+  tiago-forte:
+    name: Tiago Forte
+    url: https://youtube.com/@TiagoForte/videos
+    description: AI, productivity, startup topics
+    tags: [ai, productivity, startups]
+    priority: medium
+    notes: |
+      Quality videos on variety of AI and startup topics.
+      Some are gems. Building a Second Brain author.
+
+  # === AI AGENCY & BUSINESS ===
+
+  liam-ottley:
+    name: Liam Ottley
+    url: https://youtube.com/@LiamOttley/videos
+    description: AI agency positioning and building
+    tags: [ai-agency, business, positioning]
+    priority: high
+    notes: |
+      This guy! Great AI agency positioning.
+      Relevant for Wilde Agency strategy.
+
+  # === MARKETING ===
+
+  steph-france:
+    name: Steph France
+    url: https://youtube.com/@steph_france/videos
+    description: Marketing expertise
+    tags: [marketing]
+    priority: medium
+    notes: |
+      Marketing guru. Good for campaign and positioning ideas.
+
+  caleb-ralston:
+    name: Caleb Ralston
+    url: https://youtube.com/@CalebRalston/videos
+    description: Brand strategy
+    tags: [branding, marketing]
+    priority: low
+    notes: |
+      Brand guy. Reference for branding projects.
+
+  # === CREATIVE & PRODUCTION ===
+
+  sirio-berati:
+    name: Sirio Berati
+    url: https://youtube.com/@SirioBerati/videos
+    description: Cutting edge AI imaging and video
+    tags: [ai-creative, video, imaging]
+    priority: medium
+    notes: |
+      Cutting edge AI imaging and video.
+      Stay on forefront. Important for creative projects.
+
+  matti-haapoja:
+    name: Matti Haapoja
+    url: https://youtube.com/@mattih/videos
+    description: Modern filmmaking - iPhone, drones, AI
+    tags: [filmmaking, creative, production]
+    priority: medium
+    notes: |
+      Modern filmmaking with iPhone, drones, AI.
+      Relevant for Borderless production.
+
+  designer-up:
+    name: Designer Up
+    url: https://youtube.com/@DesignerUp/videos
+    description: Web design with AI tools
+    tags: [design, ai-tools, web]
+    priority: low
+    notes: |
+      Web designer using AI tools.
+      Good practical tool awareness.
+
+  # === OUR CONTENT ===
+
+  borderless:
+    name: Borderless Podcast
+    url: https://youtube.com/@borderless-podcast/videos
+    description: Our podcast - tracking and marketing
+    tags: [borderless, our-content]
+    priority: high
+    lookback: all  # Track everything
+    notes: |
+      Patricia's podcast. Track for marketing and analysis.
+      Will help with marketing soon.
+
+  # === SAAS & COACHING ===
+
+  saas-academy:
+    name: The SaaS Academy Podcast
+    url: https://youtube.com/@SaaSAcademy/videos
+    description: B2B SaaS founders, growth strategies, coaching
+    tags: [saas, b2b, entrepreneurship, coaching]
+    priority: high
+    notes: |
+      Matt Verlaque & Johnny Page. SaaS Academy founders.
+      Great founder stories and growth strategies.
+
+  prof-g-conversations:
+    name: Prof G Conversations
+    type: youtube-playlist
+    url: https://www.youtube.com/playlist?list=PLtQ-jBytlXCYhs6Af0AxrMOeK8QqzBk5x
+    description: Scott Galloway interviews on business, politics, culture
+    tags: [business, politics, culture, interviews]
+    priority: high
+    notes: |
+      Scott Galloway's long-form conversations.
+      High-quality guests: Ezra Klein, Jonathan Haidt, Ian Bremmer, etc.
+      Great for geopolitics, business strategy, cultural commentary.

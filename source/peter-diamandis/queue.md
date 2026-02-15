@@ -40,4 +40,18 @@ RSS Feed: https://www.youtube.com/feeds/videos.xml?channel_id=UCF3OLRj4gHv0P2C6q
 
 ## Completed
 
+- RSNuB9pj9P8 | Elon Musk on AGI Timeline, US vs China, Job Markets, Clean Energy & Humanoid Robots | 220
+
+- 2WTFuSeYJ6o | The 2026 Timeline: AGI Arrival, Safety Concerns, Robotaxi Fleets & Hyperscaler Timelines | 221
+
+- mAtmWhYQvnI | Tony Robbins Takes AI's Hardest Questions: Job Loss, Purpose, and The Hard Times Ahead | 222
+
+- 8iWSNwIRazc | The Singularity Countdown: AGI by 2029, Humans Merge with AI, Intelligence 1000x | Ray Kurzweil
+
+- DTgrzlQtOd0 | Claude Code Ends SaaS, the Gemini + Siri Partnership, and Math Finally Solves AI | #224
+
+- hGRiklWYMas | Davos 2026: The US-China AI Race, GPU Diplomacy, and Robots Walking the Streets | #225
+
+- L2rkXjd1WgM | The Frontier Labs War: Opus 4.6, GPT 5.3 Codex, and the SuperBowl Ads Debacle | EP 228
+
 - 6P0uTDGDr-I | AI CEOs Come Online: Sam Altman's Replacement Plan, Job Loss & 'Solve Everything' Launches |EP #230

@@ -39,3 +39,5 @@ RSS Feed: https://www.youtube.com/feeds/videos.xml?channel_id=UCF3OLRj4gHv0P2C6q
 ## Processing
 
 ## Completed
+
+- 6P0uTDGDr-I | AI CEOs Come Online: Sam Altman's Replacement Plan, Job Loss & 'Solve Everything' Launches |EP #230

@@ -8,6 +8,8 @@
     "ingest-url": "node scripts/ingest-url.mjs"
   },
   "dependencies": {
-    "@danielxceron/youtube-transcript": "^1.2.3"
+    "@danielxceron/youtube-transcript": "^1.2.3",
+    "playwright": "^1.58.2",
+    "youtube-captions-scraper": "^2.0.3"
   }
 }

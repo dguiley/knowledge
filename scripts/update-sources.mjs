@@ -66,14 +66,15 @@ function parseYaml(content) {
   let inMultiline = false;
 
   for (const line of content.split('\n')) {
-    // Skip comments
-    if (line.trim().startsWith('#') || line.trim() === '') {
-      if (!inMultiline) continue;
-    }
-
-    // Check for multiline end
+    // Check for multiline end BEFORE skipping comments
     if (inMultiline) {
-      if (line.match(/^[a-z_]+:/i) && !line.startsWith('    ') && !line.startsWith('\t\t')) {
+      // End multiline if we hit a non-indented line (comment, section, or new key)
+      const isDeepIndent = line.startsWith('      ') || line.startsWith('\t\t\t');
+      const isBlankOrComment = line.trim() === '' || line.trim().startsWith('#');
+      const isNewSource = line.match(/^  [a-z0-9-]+:$/i);
+      const isNewKey = line.match(/^    [a-z_]+:/i);
+      
+      if (isNewSource || isNewKey || (isBlankOrComment && !isDeepIndent && line.trim().startsWith('#'))) {
         // End of multiline
         if (currentSection === 'defaults') {
           result.defaults[currentKey] = multilineValue.trim();
@@ -82,10 +83,16 @@ function parseYaml(content) {
         }
         inMultiline = false;
         multilineValue = '';
+        // Fall through to process this line
       } else {
-        multilineValue += line.replace(/^\s+/, '') + '\n';
+        if (!isBlankOrComment) multilineValue += line.replace(/^\s+/, '') + '\n';
         continue;
       }
+    }
+
+    // Skip comments and blank lines
+    if (line.trim().startsWith('#') || line.trim() === '') {
+      continue;
     }
 
     // Top-level sections
@@ -229,7 +236,7 @@ async function ingestEpisode(videoId, sourceName, title, dryRun) {
         encoding: 'utf8',
         stdio: 'inherit',
         cwd: PROJECT_ROOT,
-        timeout: 300000  // 5 min timeout per episode
+        timeout: 1800000  // 30 min timeout per episode (Whisper chunking for long episodes)
       }
     );
     return true;

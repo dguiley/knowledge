@@ -15,10 +15,10 @@
  *   - summaries/episodes/{YYYY-MM-DD}-{video-id}-{slug}.md - Episode summary
  */
 
-import { writeFileSync, mkdirSync, existsSync, readFileSync, unlinkSync } from 'fs';
+import { writeFileSync, mkdirSync, existsSync, readFileSync } from 'fs';
 import { execSync } from 'child_process';
 import { dirname, join } from 'path';
-import { tmpdir } from 'os';
+// Playwright import removed — using multi-strategy Python transcript fetcher
 
 // Load .env from cwd if it exists
 function loadEnv() {
@@ -108,64 +108,27 @@ function decodeHtmlEntities(text) {
     .replace(/&nbsp;/g, ' ');
 }
 
-function parseVTT(vttContent) {
-  const lines = vttContent.split('\n');
-  const textLines = [];
-  let lastText = '';
-
-  for (const line of lines) {
-    if (line.startsWith('WEBVTT') ||
-        line.startsWith('Kind:') ||
-        line.startsWith('Language:') ||
-        line.includes('-->') ||
-        line.includes('align:') ||
-        line.trim() === '') {
-      continue;
-    }
-
-    let cleanLine = line.replace(/<[^>]+>/g, '').trim();
-    if (cleanLine && cleanLine !== lastText) {
-      textLines.push(cleanLine);
-      lastText = cleanLine;
-    }
+async function fetchTranscriptFromYouTube(videoId, { rss, title } = {}) {
+  // Use multi-strategy TypeScript fetcher: YouTube API → RSS+Cartesia STT
+  const { execFileSync } = await import('child_process');
+  const scriptDir = dirname(new URL(import.meta.url).pathname);
+  const fetchScript = join(scriptDir, 'fetch-transcript-cartesia.mjs');
+  
+  const args = [fetchScript, videoId];
+  if (rss) args.push('--rss', rss);
+  if (title) args.push('--title', title);
+  
+  const result = execFileSync('node', args, { 
+    encoding: 'utf8',
+    timeout: 1800000, // 30 min for long episodes
+    stdio: ['pipe', 'pipe', 'inherit']
+  });
+  
+  const fullText = result.trim();
+  if (!fullText || fullText.length < 50) {
+    throw new Error('Failed to extract transcript - content too short');
   }
-
-  return textLines.join(' ').replace(/\s+/g, ' ').trim();
-}
-
-function fetchTranscriptWithYtDlp(videoId) {
-  const tempBase = join(tmpdir(), `yt-transcript-${videoId}-${Date.now()}`);
-  const vttFile = `${tempBase}.en.vtt`;
-
-  try {
-    execSync(
-      `yt-dlp --write-auto-sub --skip-download --sub-lang en -o "${tempBase}" "https://www.youtube.com/watch?v=${videoId}" 2>&1`,
-      { encoding: 'utf8', timeout: 120000 }
-    );
-
-    if (!existsSync(vttFile)) {
-      // Try to find any subtitle file
-      const files = execSync(`ls ${tempBase}*.vtt 2>/dev/null || true`, { encoding: 'utf8' });
-      if (!files.trim()) {
-        throw new Error('No subtitles available for this video');
-      }
-      const availableVtt = files.trim().split('\n')[0];
-      if (availableVtt && existsSync(availableVtt)) {
-        const vttContent = readFileSync(availableVtt, 'utf8');
-        try { unlinkSync(availableVtt); } catch {}
-        return parseVTT(vttContent);
-      }
-      throw new Error('No subtitles available for this video');
-    }
-
-    const vttContent = readFileSync(vttFile, 'utf8');
-    try { unlinkSync(vttFile); } catch {}
-    return parseVTT(vttContent);
-
-  } catch (error) {
-    try { unlinkSync(vttFile); } catch {}
-    throw error;
-  }
+  return fullText;
 }
 
 function chunkText(text, chunkSize = CHUNK_SIZE) {
@@ -324,9 +287,17 @@ async function ingestEpisode(options) {
     if (!existsSync(dir)) mkdirSync(dir, { recursive: true });
   });
 
-  // 1. Fetch transcript using yt-dlp
+  // 1. Fetch transcript (multi-strategy: YouTube API → Tor → RSS+Whisper)
   console.error(`[1/4] Fetching transcript for ${videoId}...`);
-  const fullText = fetchTranscriptWithYtDlp(videoId);
+  // Load RSS from source config if available
+  const configPath = join(sourceDir, 'config.yaml');
+  let rssUrl = null;
+  if (existsSync(configPath)) {
+    const configContent = readFileSync(configPath, 'utf8');
+    const rssMatch = configContent.match(/rss:\s*(.+)/);
+    if (rssMatch) rssUrl = rssMatch[1].trim();
+  }
+  const fullText = await fetchTranscriptFromYouTube(videoId, { rss: rssUrl, title });
 
   console.error(`  → ${fullText.length} chars, ~${Math.round(fullText.length / 4)} tokens`);
 
